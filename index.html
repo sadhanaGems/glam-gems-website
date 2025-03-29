@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glam Gems | Luxury Fashion Jewelry</title>
+    <style>
+        /* ===== GLOBAL STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        :root {
+            --gold: #D4AF37;
+            --black: #000000;
+            --light-gold: #F5E6C8;
+            --dark-gray: #222222;
+        }
+        
+        body {
+            background-color: #fafafa;
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--black);
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 3px solid var(--gold);
+        }
+        
+        .logo {
+            height: 80px;
+            margin-bottom: 10px;
+        }
+        
+        .brand-name {
+            color: var(--gold);
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+        
+        .instagram-handle {
+            color: var(--light-gold);
+            margin-top: 5px;
+            font-size: 1.1rem;
+        }
+        
+        /* ===== PRODUCT GRID ===== */
+        .collection {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .product-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .product-title {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        .product-price {
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        /* ===== ORDER BUTTONS ===== */
+        .order-options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .order-btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            border: none;
+        }
+        
+        .instagram-btn {
+            background: #E4405F;
+            color: white;
+            border: none;
+        }
+        
+        .order-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* ===== ORDER SECTION ===== */
+        .order-section {
+            background-color: var(--light-gold);
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .order-instructions {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        /* ===== SOCIAL MEDIA SECTION ===== */
+        .social-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+        
+        .social-post {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .social-post:hover {
+            transform: scale(1.05);
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--black);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+        
+        .social-icons {
+            margin-bottom: 25px;
+        }
+        
+        .social-icons a {
+            color: white;
+            margin: 0 12px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--gold);
+        }
+        
+        .copyright {
+            font-size: 14px;
+            color: #999;
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .collection-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 20px;
+            }
+            
+            .order-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .order-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .collection-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+            
+            .product-img {
+                height: 180px;
+            }
+            
+            .brand-name {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <!-- Add width/height attributes -->
+<img src="products/logo.png" alt="Glam Gems" 
+style="width: 300px; height: auto;">
+            <h1 class="brand-name">GLAM & GEMS</h1>
+            <div class="instagram-handle">
+                @glam_gems0 <!-- Replace with your handle -->
+            </div>
+            
+        </div>
+    </header>
+
+    <!-- Product Collection -->
+    <section class="collection">
+        <div class="container">
+            <h2 class="section-title">Our Jewellery Collection</h2>
+            
+            <div class="collection-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <img src="products/sparkle bracelet.jpg" alt="purple bracelet" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Purple sparkle bracelet</h3>
+                        <p class="product-price">60.00</p>
+                        <div class="order-options">
+                            <button class="order-btn whatsapp-btn" onclick="orderOnWhatsApp('purple sparkle bracelet', 60.00)">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </button>
+                            <button class="order-btn instagram-btn" onclick="orderOnInstagram('purple sparkle bracelet')">
+                                <i class="fab fa-instagram"></i> DM
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <img src="products/silver sparkle bracelet.jpg" alt=" Silver sparkle bracelet" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Silver sparkle bracelet</h3>
+                        <p class="product-price">60.00</p>
+                        <div class="order-options">
+                            <button class="order-btn whatsapp-btn" onclick="orderOnWhatsApp('Silver sparkle bracelet', 60.00)">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </button>
+                            <button class="order-btn instagram-btn" onclick="orderOnInstagram('silver sparkle bracelet')">
+                                <i class="fab fa-instagram"></i> DM
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3-10 (similar structure) -->
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <img src="products/mixed2 shine bracelets.jpg" alt="mixed color bracelet" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Multi color sparkle</h3>
+                        <p class="product-price">60.00</p>
+                        <div class="order-options">
+                            <button class="order-btn whatsapp-btn" onclick="orderOnWhatsApp('Multi color sparkle', 60.00)">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </button>
+                            <button class="order-btn instagram-btn" onclick="orderOnInstagram('Multi color sparkle')">
+                                <i class="fab fa-instagram"></i> DM
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <img src="products/heart bracelet.jpg" alt="heart bracelet" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Heart bracelet</h3>
+                        <p class="product-price">50.00</p>
+                        <div class="order-options">
+                            <button class="order-btn whatsapp-btn" onclick="orderOnWhatsApp('Heart bracelet', 50.00)">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </button>
+                            <button class="order-btn instagram-btn" onclick="orderOnInstagram('heart bracelet')">
+                                <i class="fab fa-instagram"></i> DM
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <img src="products/basic bracelets.jpg" alt="cute pink bracelet" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">pink bracelet</h3>
+                        <p class="product-price">40.00</p>
+                        <div class="order-options">
+                            <button class="order-btn whatsapp-btn" onclick="orderOnWhatsApp('pink bracelet', 40.00)">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </button>
+                            <button class="order-btn instagram-btn" onclick="orderOnInstagram('pink bracelet')">
+                                <i class="fab fa-instagram"></i> DM
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <img src="products/shiney earrings.jpg" alt="sparkling earings" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Sparkling earrings</h3>
+                        <p class="product-price">30.00</p>
+                        <div class="order-options">
+                            <button class="order-btn whatsapp-btn" onclick="orderOnWhatsApp('Sparkling earrings',30.00)">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </button>
+                            <button class="order-btn instagram-btn" onclick="orderOnInstagram('Sparkling earings')">
+                                <i class="fab fa-instagram"></i> DM
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 7 -->
+                <div class="product-card">
+                    <img src="products/basic earrings.jpg" alt="marble earings" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Marble earrings</h3>
+                        <p class="product-price">40.00</p>
+                        <div class="order-options">
+                            <button class="order-btn whatsapp-btn" onclick="orderOnWhatsApp('Marble ear',40.00)">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </button>
+                            <button class="order-btn instagram-btn" onclick="orderOnInstagram(' Marble earrings')">
+                                <i class="fab fa-instagram"></i> DM
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 8 -->
+                <div class="product-card">
+                    <img src="products/heart necklce.jpeg" alt="heart necklce " class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title"> heart necklce</h3>
+                        <p class="product-price">60.00</p>
+                        <div class="order-options">
+                            <button class="order-btn whatsapp-btn" onclick="orderOnWhatsApp('heart necklce ', 60.00)">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </button>
+                            <button class="order-btn instagram-btn" onclick="orderOnInstagram('heart necklce')">
+                                <i class="fab fa-instagram"></i> DM
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 9 -->
+                <div class="product-card">
+                    <img src="products/golden hoop.jpg" alt="twisted golden hoop earrings" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">twisted golden hoop</h3>
+                        <p class="product-price">60.00</p>
+                        <div class="order-options">
+                            <button class="order-btn whatsapp-btn" onclick="orderOnWhatsApp('twisted golden hoop',60.00)">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </button>
+                            <button class="order-btn instagram-btn" onclick="orderOnInstagram('twisted golden hoop')">
+                                <i class="fab fa-instagram"></i> DM
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 10 -->
+                <div class="product-card">
+                    <img src="products/open circle hoop .jpg" alt=" open circle hoop " class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Open circle hoop </h3>
+                        <p class="product-price">50.00</p>
+                        <div class="order-options">
+                            <button class="order-btn whatsapp-btn" onclick="orderOnWhatsApp('Open circle hoop',50.00)">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </button>
+                            <button class="order-btn instagram-btn" onclick="orderOnInstagram('Open circle hoop')">
+                                <i class="fab fa-instagram"></i> DM
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Instructions Section -->
+    <section class="order-section">
+        <div class="container">
+            <h2 class="section-title">How To Order</h2>
+            <div class="order-instructions">
+                <p>Choose your favorite pieces and order directly via WhatsApp or Instagram DM. We offer worldwide shipping!</p>
+            </div>
+            <div class="order-options" style="justify-content: center; margin-top: 30px;">
+                <a href="https://wa.me/8779911710?text=Hi%20Glam%20Gems,%20I%20want%20to%20place%20an%20order!" class="order-btn whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+                <a href="https://www.instagram.com/glam_gems0/?igsh=Z3dzNnB6cDFybmh3# class="order-btn instagram-btn">
+                    <i class="fab fa-instagram"></i> DM on Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Section -->
+    <section class="social-section">
+        <div class="container">
+            <h2 class="https://www.instagram.com/glam_gems0/?igsh=Z3dzNnB6cDFybmh3#">Follow @glam_gems0</h2>
+            <p>Tag us in your photos for a chance to be featured!</p>
+            
+            <div class="social-grid">
+                <div class="social-post" style="background-image: url('images/instagram/post1.jpg')"></div>
+                <div class="social-post" style="background-image: url('images/instagram/post2.jpg')"></div>
+                <div class="social-post" style="background-image: url('images/instagram/post3.jpg')"></div>
+                <div class="social-post" style="background-image: url('images/instagram/post4.jpg')"></div>
+                <div class="social-post" style="background-image: url('images/instagram/post5.jpg')"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">About Us</a>
+                <a href="#">Shipping Policy</a>
+                <a href="#">Returns</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            
+            <div class="social-icons">
+                <a href="https://facebook.com/yourpage"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/glam_gems0/?igsh=Z3dzNnB6cDFybmh3#"><i class="fab fa-instagram"></i></a>
+                <a href="https://pinterest.com/yourpage"><i class="fab fa-pinterest-p"></i></a>
+                <a href="https://tiktok.com/@yourpage"><i class="fab fa-tiktok"></i></a>
+            </div>
+            
+            <p class="copyright">&copy; 2025 Glam Gems. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/8779911710?text=Hi%20Glam%20Gems,%20I%20have%20a%20question" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Order Functions
+        function orderOnWhatsApp(productName, price) {
+            const message = `Hi Glam Gems, I'd like to order the ${productName} ($${price}). My details:`;
+            const whatsappUrl = `https://wa.me/8779911710?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+        
+        function orderOnInstagram(productName) {
+            const message = `Hi @glam_gems0, I'd like to order the ${productName}. My details:`;
+            const instagramUrl = `https://instagram.com/glam_gems0`;
+            // Instagram doesn't support pre-filled DMs, so we just open profile
+            window.open(instagramUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
