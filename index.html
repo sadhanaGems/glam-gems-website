@@ -537,12 +537,11 @@ style="width: 300px; height: auto;">
 </a>
 
     <script>
-        // Order Functions
-        function orderOnWhatsApp(productName, price) {
-            const message = `Hi Glam & Gems, I'd like to order the ${productName} ($${price}). My details:`;
-            const whatsappUrl = `https://wa.me/918779911710?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-        }
+        // Alternative using WhatsApp's official click-to-chat
+function orderOnWhatsApp(productName, price) {
+    const message = `Hi Glam & Gems, I'd like to order the ${productName} ($${price}). My details:`;
+    window.open(`https://api.whatsapp.com/send?phone=918779911710&text=${encodeURIComponent(message)}`, '_blank');
+}
         
         function orderOnInstagram(productName) {
             const message = `Hi @glam_gems0, I'd like to order the ${productName}. My details:`;
